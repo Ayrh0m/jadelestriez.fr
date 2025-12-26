@@ -4,6 +4,7 @@ import { client, urlFor } from "../sanityClient";
 import type { Project } from "../types";
 import "../styles/Home.css";
 import texture_2 from "../assets/images/texture_2.jpg";
+import SEO from "../components/SEO";
 
 export default function Home() {
   const [latestProject, setLatestProject] = useState<Project | null>(null);
@@ -31,6 +32,10 @@ export default function Home() {
 
   return (
     <div className="home-container">
+      <SEO
+        title="Accueil"
+        description="Portfolio de Jade, étudiante en communication spécialisée dans le design et la création digitale. Découvrez mes projets et mon univers."
+      />
       <div className="latest-projects" style={paddingStyle}>
         {latestProject && (
           <>

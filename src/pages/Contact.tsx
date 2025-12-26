@@ -1,10 +1,15 @@
 import contact from "../assets/images/CONTACT.svg";
 import { FaInstagram, FaLinkedin } from "react-icons/fa6";
+import SEO from "../components/SEO";
 import "../styles/Contact.css";
 
 export default function Contact() {
   return (
     <section className="contact">
+      <SEO
+        title="Contact"
+        description="Contactez Jade pour toute collaboration ou information. Envoyez un message ou retrouvez-moi sur les réseaux sociaux."
+      />
       <div className="outer-container">
         <div className="inner-container">
           <img src={contact} alt="Contact" className="contact-image" />

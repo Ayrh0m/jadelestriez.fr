@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { client, urlFor } from "../sanityClient";
+import SEO from "../components/SEO";
 import type { Categorie, Project } from "../types";
 import "../styles/Projects.css";
 import projets from "../assets/images/PROJETS.svg";
@@ -32,6 +33,10 @@ export default function Projects() {
 
   return (
     <section className="projects-section">
+      <SEO
+        title="Mes Projets"
+        description="Découvrez les projets de Jade, incluant graphisme, communication et design web. Une galerie variée démontrant mes compétences."
+      />
       <h1 className="projects-title">
         <img src={projets} alt="Projets" />
       </h1>
