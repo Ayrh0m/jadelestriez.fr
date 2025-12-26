@@ -1,0 +1,39 @@
+:root {
+  /* Colors */
+  --color-primary: #A65132;
+  --color-secondary: #CFB49D;
+  --color-accent: #455918;
+  --color-background: #FFFDFB;
+  --color-foreground: #29180A;
+
+  --gray-800: #3C3030;
+  --gray-600: #6A5B5B;
+  --gray-400: #A29696;
+  --gray-200: #C9B8B8;
+  --gray-50: #F2EBEB;
+
+  /* Fonts */
+  --font-body: "Lunasima", sans-serif;
+  --font-heading: "Allegra", sans-serif;
+}
+
+@font-face {
+  font-family: "Allegra";
+  src: url("./assets/fonts/AllegraRegular.otf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global styles */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
