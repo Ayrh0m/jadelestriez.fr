@@ -2,12 +2,12 @@
   display: flex;
   padding: 2rem 4rem;
   flex-grow: 1;
+  height: 80dvh;
 }
 
 .latest-projects {
   width: 50%;
   position: relative;
-  padding: 8rem 6rem 0 4rem;
 }
 
 .home-section {
@@ -15,15 +15,21 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  text-align: right;
+  margin-right: 4rem;
 }
 
 .home-title {
+  margin-top: 6rem;
   font-family: var(--font-heading);
   margin-bottom: 1rem;
+  font-size: 5rem;
+  width: 100%;
+  line-height: 1.2;
 }
 
 .home-description {
-  max-width: 600px;
+  max-width: 500px;
   line-height: 1.6;
 }
 
@@ -49,6 +55,16 @@
   border: 1px solid var(--color-background);
 }
 
+.latest-project-card h2 {
+  position: absolute;
+  bottom: 1rem;
+  left: calc(100% + 1rem);
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--color-foreground);
+  width: 370px;
+}
+
 .latest-project-card a {
   display: block;
   width: 100%;
@@ -63,7 +79,7 @@
 
 .latest-project-card:nth-child(1) {
   position: relative;
-  width: 100%;
+  width: 85%;
   height: 100%;
   z-index: 1;
 }
