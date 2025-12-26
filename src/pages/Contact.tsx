@@ -1,12 +1,13 @@
 import contact from "../assets/images/CONTACT.svg";
 import { FaInstagram, FaLinkedin } from "react-icons/fa6";
+import "../styles/Contact.css";
 
 export default function Contact() {
   return (
-    <section>
+    <section className="contact">
       <div className="outer-container">
         <div className="inner-container">
-          <img src={contact} alt="Contact" />
+          <img src={contact} alt="Contact" className="contact-image" />
           <div className="tabs">
             <span>Email</span>
           </div>
@@ -21,8 +22,8 @@ export default function Contact() {
             <button type="submit">Envoyer</button>
           </form>
           <div className="socials">
-            <FaInstagram />
-            <FaLinkedin />
+            <FaInstagram size={64} />
+            <FaLinkedin size={64} />
           </div>
         </div>
       </div>
