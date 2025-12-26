@@ -4,6 +4,7 @@ import SEO from "../components/SEO";
 import type { Categorie, Project } from "../types";
 import "../styles/Projects.css";
 import projets from "../assets/images/PROJETS.svg";
+import Footer from "../components/Footer";
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -32,32 +33,35 @@ export default function Projects() {
       : projects.filter((p) => p.categorie?.nom === selectedCategory);
 
   return (
-    <section className="projects-section">
-      <SEO
-        title="Mes Projets"
-        description="Découvrez les projets de Jade, incluant graphisme, communication et design web. Une galerie variée démontrant mes compétences."
-      />
-      <h1 className="projects-title">
-        <img src={projets} alt="Projets" />
-      </h1>
-      <ProjectFilters
-        selectedCategory={selectedCategory}
-        onFilterChange={setSelectedCategory}
-      />
-      <div className="projects-grid">
-        {filteredProjects.map((project) => (
-          <div key={project._id} className="project-card">
-            {project.miniature && (
-              <img
-                src={urlFor(project.miniature).width(600).height(400).url()}
-                alt={project.titre || ""}
-                className="project-image"
-              />
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
+    <>
+      <section className="projects-section">
+        <SEO
+          title="Mes Projets"
+          description="Découvrez les projets de Jade, incluant graphisme, communication et design web. Une galerie variée démontrant mes compétences."
+        />
+        <h1 className="projects-title">
+          <img src={projets} alt="Projets" />
+        </h1>
+        <ProjectFilters
+          selectedCategory={selectedCategory}
+          onFilterChange={setSelectedCategory}
+        />
+        <div className="projects-grid">
+          {filteredProjects.map((project) => (
+            <div key={project._id} className="project-card">
+              {project.miniature && (
+                <img
+                  src={urlFor(project.miniature).width(600).height(400).url()}
+                  alt={project.titre || ""}
+                  className="project-image"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+      <Footer />
+    </>
   );
 }
 

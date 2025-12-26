@@ -1,63 +1,26 @@
-/* Footer Layout */
 .footer {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  padding: 3rem 2rem;
+  padding: 3rem 4rem;
   border-top: 1px solid var(--gray-200);
-  margin-top: auto; /* Pushes footer to bottom if container is flex col */
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
 }
 
-/* Footer Sections */
-.footer-section {
-  flex: 1;
-  min-width: 200px;
-}
-
-.footer-logo {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: var(--color-primary);
-  display: inline-block;
-}
-
-.footer-description {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--gray-600);
-  max-width: 300px;
-}
-
-.footer-heading {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
-  color: var(--color-foreground);
-}
-
 .footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  gap: 2rem;
 }
 
 .footer-links li {
-  margin-bottom: 0.5rem;
+  text-transform: uppercase;
 }
 
 .footer-links a {
-  color: var(--gray-600);
+  color: var(--gray-800);
   text-decoration: none;
   transition: color 0.3s ease;
   font-size: 0.95rem;
@@ -67,16 +30,15 @@
   color: var(--color-primary);
 }
 
-/* Social Icons (Text-based for now or placeholders) */
 .social-links {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .social-link {
   color: var(--color-foreground);
-  font-weight: 500;
   transition: color 0.3s ease;
+  font-size: 2rem;
 }
 
 .social-link:hover {
