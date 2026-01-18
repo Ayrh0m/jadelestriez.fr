@@ -6,7 +6,7 @@ import {
   FaTwitter,
   FaGlobe,
 } from "react-icons/fa6";
-import { motion } from "motion/react";
+import Link from "./Link";
 
 type SocialNetwork =
   | "instagram"
@@ -39,20 +39,14 @@ export default function SocialIcon({
   const IconComponent = iconMap[network];
 
   return (
-    <motion.a
+    <Link
       href={href}
-      target="_blank"
-      rel="noopener noreferrer"
       className={`social-icon ${className}`}
-      whileHover={{ opacity: 0.7 }}
-      transition={{ duration: 0.2 }}
       style={{
         display: "inline-flex",
-        color: "inherit",
-        textDecoration: "none",
       }}
     >
       <IconComponent size={size} />
-    </motion.a>
+    </Link>
   );
 }

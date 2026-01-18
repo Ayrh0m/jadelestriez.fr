@@ -1,0 +1,14 @@
+/* Link Styles */
+.link {
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-body);
+  transition: color 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+
+.link:hover {
+  color: var(--color-primary);
+}
