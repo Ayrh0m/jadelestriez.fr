@@ -5,6 +5,7 @@ import type { Categorie, Project } from "../types";
 import "../styles/Projects.css";
 import projets from "../assets/images/PROJETS.svg";
 import Footer from "../components/Footer";
+import FilterLink from "../components/ui/FilterLink";
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -91,24 +92,20 @@ function ProjectFilters({
 
   return (
     <div className="filters">
-      <button
-        className={`filter-button ${
-          selectedCategory === "Tous" ? "active" : ""
-        }`}
+      <FilterLink
+        isActive={selectedCategory === "Tous"}
         onClick={() => onFilterChange("Tous")}
       >
         Tous
-      </button>
+      </FilterLink>
       {filters.map((filter) => (
-        <button
+        <FilterLink
           key={filter._id}
-          className={`filter-button ${
-            selectedCategory === filter.nom ? "active" : ""
-          }`}
+          isActive={selectedCategory === filter.nom}
           onClick={() => onFilterChange(filter.nom)}
         >
           {filter.nom}
-        </button>
+        </FilterLink>
       ))}
     </div>
   );
