@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 import { client, urlFor } from "../sanityClient";
 import type { Project } from "../types";
 import "../styles/Home.css";
 import texture_2 from "../assets/images/texture_2.jpg";
 import SEO from "../components/SEO";
+import Button from "../components/ui/Button";
 
 export default function Home() {
   const [latestProject, setLatestProject] = useState<Project | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const query = `*[_type == "projet"] | order(_createdAt desc)[0] {
@@ -119,12 +121,20 @@ export default function Home() {
           drops topping cake muffin chees
         </p>
         <div className="home-link-container">
-          <Link to="/contact" className="home-link">
+          <Button 
+            variant="border-primary" 
+            onClick={() => navigate("/contact")}
+            style={{ fontSize: '1rem' }}
+          >
             Contactez-moi
-          </Link>
-          <Link to="/projets" className="home-btn">
+          </Button>
+          <Button 
+            variant="primary" 
+            onClick={() => navigate("/projets")}
+            style={{ fontSize: '1rem' }}
+          >
             Mes projets
-          </Link>
+          </Button>
         </div>
       </section>
     </div>

@@ -1,6 +1,8 @@
 import contact from "../assets/images/CONTACT.svg";
-import { FaInstagram, FaLinkedin } from "react-icons/fa6";
 import SEO from "../components/SEO";
+import Button from "../components/ui/Button";
+import { Input, Textarea } from "../components/ui/Input";
+import SocialIcon from "../components/ui/SocialIcon";
 import "../styles/Contact.css";
 
 export default function Contact() {
@@ -17,18 +19,32 @@ export default function Contact() {
             <span>Email</span>
           </div>
           <form action="">
-            <input type="text" placeholder="Email" required />
-            <textarea
+            <Input type="text" placeholder="Email" required />
+            <Textarea
               name="message"
               placeholder="Que voulez-vous me dire ?"
               rows={4}
               required
-            ></textarea>
-            <button type="submit">Envoyer</button>
+            />
+            <Button
+              type="submit"
+              variant="border"
+              style={{ alignSelf: "center" }}
+            >
+              Envoyer
+            </Button>
           </form>
           <div className="socials">
-            <FaInstagram size={64} />
-            <FaLinkedin size={64} />
+            <SocialIcon
+              network="instagram"
+              href="https://www.instagram.com"
+              size={48}
+            />
+            <SocialIcon
+              network="linkedin"
+              href="https://www.linkedin.com"
+              size={48}
+            />
           </div>
         </div>
       </div>
