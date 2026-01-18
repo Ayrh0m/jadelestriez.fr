@@ -2,9 +2,6 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 1rem;
-  border-left: 1px solid var(--gray-200);
-  margin-left: 0.5rem;
 }
 
 .order-button {
