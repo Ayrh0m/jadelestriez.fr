@@ -8,13 +8,39 @@ import { Input, Textarea } from "../../ui/Input";
 export default function ContactForm() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [errors, setErrors] = useState<{ email?: string; message?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateForm = () => {
+    const newErrors: { email?: string; message?: string } = {};
+    let isValid = true;
+
+    // Validation Email
+    // "chiffres, lettres min et maj et symbole autorisés" + @ + "caractères autorisés dans le domaine mail" + . + "2 à 4 caractères lettre min uniquement"
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$/;
+    if (!email) {
+      newErrors.email = "L'email est requis";
+      isValid = false;
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Veuillez entrer une adresse email valide";
+      isValid = false;
+    }
+
+    // Validation Message
+    if (!message.trim()) {
+      newErrors.message = "Le message ne peut pas être vide";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!email || !message) {
-      toast.error("Veuillez remplir tous les champs");
+    if (!validateForm()) {
+      toast.error("Veuillez corriger les erreurs avant d'envoyer");
       return;
     }
 
@@ -74,13 +100,17 @@ export default function ContactForm() {
     >
       <motion.div variants={itemVariants}>
         <Input 
-          type="email" 
+          type="text" 
           placeholder="Email" 
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required 
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (errors.email) setErrors({ ...errors, email: undefined });
+          }}
           disabled={isSubmitting}
+          className={errors.email ? "input-error" : ""}
         />
+        {errors.email && <span className="field-error">{errors.email}</span>}
       </motion.div>
       
       <motion.div variants={itemVariants}>
@@ -88,11 +118,15 @@ export default function ContactForm() {
           name="message"
           placeholder="Que voulez-vous me dire ?"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            if (errors.message) setErrors({ ...errors, message: undefined });
+          }}
           rows={4}
-          required
           disabled={isSubmitting}
+          className={errors.message ? "input-error" : ""}
         />
+        {errors.message && <span className="field-error">{errors.message}</span>}
       </motion.div>
       
       <motion.div variants={itemVariants} style={{ display: 'flex', justifyContent: 'center' }}>
