@@ -30,7 +30,10 @@ export default function Link({
         className={`link ${className}`}
         whileHover={{ opacity: 0.6 }}
         whileTap={{ scale: 0.95, opacity: 1 }}
-        transition={{ duration: 0.2 }}
+        transition={{ 
+          duration: 0.2,
+          scale: { duration: 0.1 }
+        }}
         target="_blank"
         rel="noopener noreferrer"
         {...(props as HTMLMotionProps<"a">)}
@@ -46,7 +49,10 @@ export default function Link({
       className={`link ${className}`}
       whileHover={{ opacity: 0.6 }}
       whileTap={{ scale: 0.95, opacity: 1 }}
-      transition={{ duration: 0.2 }}
+      transition={{ 
+        duration: 0.2,
+        scale: { duration: 0.1 }
+      }}
       {...(props as HTMLMotionProps<"a">)}
     >
       {children}
