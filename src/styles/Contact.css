@@ -23,7 +23,7 @@
     align-items: center;
     flex-grow: 1;
     gap: 1rem;
-    border-radius: 20px;
+    border-radius: 20px; /* EXCEPTION: Design choice, do not remove radius here */
 }
 
 .contact-header {
