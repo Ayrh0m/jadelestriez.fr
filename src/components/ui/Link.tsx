@@ -28,7 +28,8 @@ export default function Link({
       <motion.a
         href={href}
         className={`link ${className}`}
-        whileHover={{ opacity: 0.7 }}
+        whileHover={{ opacity: 0.6 }}
+        whileTap={{ scale: 0.95, opacity: 1 }}
         transition={{ duration: 0.2 }}
         target="_blank"
         rel="noopener noreferrer"
@@ -43,7 +44,8 @@ export default function Link({
     <MotionRouterLink
       to={href}
       className={`link ${className}`}
-      whileHover={{ opacity: 0.7 }}
+      whileHover={{ opacity: 0.6 }}
+      whileTap={{ scale: 0.95, opacity: 1 }}
       transition={{ duration: 0.2 }}
       {...(props as HTMLMotionProps<"a">)}
     >
