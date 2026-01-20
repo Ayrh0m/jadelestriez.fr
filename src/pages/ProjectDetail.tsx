@@ -28,6 +28,7 @@ export default function ProjectDetail() {
       short_description,
       long_description,
       mainImage,
+      gallery,
       categorie->{
         nom,
         "slug": slug.current

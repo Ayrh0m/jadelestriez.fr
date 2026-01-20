@@ -15,6 +15,7 @@ export interface Project {
   };
   thumbnail: SanityImageSource;
   mainImage: SanityImageSource;
+  gallery?: SanityImageSource[];
 }
 
 export interface Categorie {
