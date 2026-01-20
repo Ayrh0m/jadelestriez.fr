@@ -44,8 +44,6 @@ export default function MainImage({ project }: MainImageProps) {
             variants={imageVariants}
             onClick={() => setIsLightboxOpen(true)}
             style={{ cursor: "zoom-in" }}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
           />
         )}
       </div>
