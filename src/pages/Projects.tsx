@@ -36,7 +36,7 @@ export default function Projects() {
     const query = `*[_type == "projet"] | order(_createdAt desc){
       _id,
       _createdAt,
-      miniature,
+      mainImage,
       titre,
       "slug": slug.current,
       categorie->{
@@ -70,7 +70,7 @@ export default function Projects() {
     // Filter by search term
     if (debouncedSearchTerm.trim() !== "") {
       filtered = filtered.filter((p) =>
-        p.titre?.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+        p.titre?.toLowerCase().includes(debouncedSearchTerm.toLowerCase()),
       );
     }
 
