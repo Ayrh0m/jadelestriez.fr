@@ -18,14 +18,15 @@ export default function HomeHero() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 15 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as any } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] as any },
+    },
   };
 
   return (
-    <motion.section 
-      className="home-section"
-      variants={containerVariants}
-    >
+    <motion.section className="home-section" variants={containerVariants}>
       <motion.h1 className="home-title" variants={itemVariants}>
         Étudiante en communication
       </motion.h1>
@@ -37,19 +38,19 @@ export default function HomeHero() {
         drops topping cake muffin chees
       </motion.p>
       <motion.div className="home-link-container" variants={itemVariants}>
-        <Button 
-          variant="border-primary" 
-          onClick={() => navigate("/contact")}
-          style={{ fontSize: '1rem' }}
-        >
-          Contactez-moi
-        </Button>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           onClick={() => navigate("/projets")}
-          style={{ fontSize: '1rem' }}
+          style={{ fontSize: "1rem" }}
         >
           Mes projets
+        </Button>
+        <Button
+          variant="border-primary"
+          onClick={() => navigate("/contact")}
+          style={{ fontSize: "1rem" }}
+        >
+          Contactez-moi
         </Button>
       </motion.div>
     </motion.section>

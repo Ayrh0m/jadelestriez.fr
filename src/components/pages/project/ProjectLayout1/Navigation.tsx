@@ -27,7 +27,9 @@ export default function Navigation({ project }: NavigationProps) {
 
       {project.categorie && (
         <motion.div className="project-category" variants={itemVariants}>
-          {project.categorie.nom.toUpperCase()}
+          <Link to={`/projets?categorie=${project.categorie.slug}`}>
+            {project.categorie.nom.toUpperCase()}
+          </Link>
         </motion.div>
       )}
     </>

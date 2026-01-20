@@ -20,7 +20,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     >
       <Link to={`/projets/${project.slug}`}>
         <motion.img
-          src={urlFor(project.mainImage).width(600).height(400).url()}
+          src={urlFor(project.mainImage)
+            .width(600)
+            .height(400)
+            .format("webp")
+            .quality(60)
+            .url()}
           alt={project.titre || "Projet sans titre"}
           className="project-image"
           loading="lazy"
