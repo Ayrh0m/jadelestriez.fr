@@ -13,7 +13,7 @@ import {
 import Button from "../components/ui/Button";
 import ColorCard from "../components/design/ColorCard";
 import Link from "../components/ui/Link";
-import "../styles/Design.css"; // We will create this locally for this page's layout
+import "../styles/pages/Design.css"; // We will create this locally for this page's layout
 
 export default function Design() {
   const brandColors = [

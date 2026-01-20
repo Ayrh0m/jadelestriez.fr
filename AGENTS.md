@@ -1,137 +1,145 @@
 # Jade Portfolio - Frontend Agent Guidelines
 
 This document provides comprehensive instructions and guidelines for AI agents and developers working on the Jade Portfolio frontend repository.
+Strict adherence to these guidelines is required to maintain the "Sharp" aesthetic and codebase integrity.
 
 ## 1. Project Overview
 
 - **Stack**: React 19, TypeScript, Vite 7
-- **Styling**: Vanilla CSS (BEM-like), `motion/react` (v12) for animations
+- **Styling**: Vanilla CSS (BEM-like classes), `motion/react` (v12) for animations
 - **Routing**: `react-router-dom` v7 (Data Router pattern)
 - **Backend**: Cloudflare Pages Functions (`functions/`)
-- **Data**: Sanity CMS (`@sanity/client`)
-- **UI Feedback**: `sonner` for toast notifications
+- **CMS**: Sanity CMS (`@sanity/client`)
 - **Package Manager**: `pnpm`
-- **Design Philosophy**: "Sharp" aesthetic (strictly `border-radius: 0` everywhere), minimalist, premium feel.
+- **Design Philosophy**: "Sharp" aesthetic. **Strictly `border-radius: 0` everywhere**. Minimalist, premium feel.
 
 ## 2. Environment & Commands
 
-### Setup
+### Setup & Development
 Ensure you are in the `frontend` directory.
 ```bash
 pnpm install
+pnpm run dev      # Starts frontend at http://localhost:5173
 ```
-
-### Development
-Start the development server:
-```bash
-pnpm run dev
-```
-- Frontend: `http://localhost:5173`
-- Cloudflare Functions (local): Requires `wrangler pages dev`
+*Cloudflare Functions locally require `wrangler pages dev`.*
 
 ### Building (CRITICAL)
-Build for production. **Always run this before confirming a task is done.**
+Always run the build before confirming a task is done.
 ```bash
 pnpm run build
 ```
-*Note: This runs `tsc -b` (TypeScript Build) followed by `vite build`.*
+*This runs `tsc -b` (TypeScript Build) followed by `vite build`.*
 
 ### Linting
-Run ESLint to check for code quality and hooks issues:
+Check for code quality and hooks issues. Fix all errors before committing.
 ```bash
 pnpm run lint
 ```
-*Fix all lint errors before committing.*
 
-### Testing
-*Current Status: No testing framework is currently configured.*
+### Testing (Reference)
+*Note: No testing framework is currently configured in `package.json`.*
+If adding tests or running future tests, assume **Vitest** + **React Testing Library**.
 
-If instructed to add tests, use **Vitest** + **React Testing Library**.
-**Standard commands (for future reference):**
-
-- **Run all tests**:
+- **Run a single test file** (Hypothetical):
   ```bash
-  pnpm test
+  npx vitest run path/to/file.test.tsx
   ```
-- **Run a single test file** (IMPORTANT):
-  ```bash
-  pnpm test path/to/file.test.tsx
-  ```
-- **Run tests in UI mode**:
-  ```bash
-  pnpm test --ui
-  ```
+- **Run all tests**: `npx vitest run`
 
 ## 3. Code Style & Conventions
 
 ### 3.1. Design & UI (Strict)
-- **Border Radius**: MUST be `0` or `none` for ALL elements. No rounded corners.
-- **Components**: Use reusable UI components from `src/components/ui/` instead of raw HTML.
-- **Styling**: Prefer centralized CSS in `src/styles/`. Avoid inline styles.
+- **Border Radius**: **MUST be `0` or `none`** for ALL elements (buttons, inputs, cards, images).
+- **CSS Variables**: Use variables from `src/styles/` (e.g., `var(--color-primary)`, `var(--font-body)`).
+- **Styling Strategy**:
+  - Centralized CSS in `src/styles/` organized by type (`layout/`, `pages/`, `ui/`, `features/`).
+  - Import CSS files in the component file (e.g., `import "../../styles/ui/Button.css"`).
+  - Use BEM-like naming: `.component`, `.component-variant`, `.component__element`.
 - **Animations**:
-  - Import from `motion/react` (NOT `framer-motion` directly).
-  - Standard durations: `0.2s` (interactions), `0.5s` (transitions).
-  - Use `AnimatePresence` for exit animations.
+  - Import ONLY from `motion/react`:
+    ```tsx
+    import { motion } from "motion/react";
+    import type { HTMLMotionProps } from "motion/react";
+    ```
+  - Standard duration: `0.2s` for interactions.
 
-### 3.2. TypeScript
-- **Strictness**: Maintain strict type checking. No `any`.
-- **Props**: Define component props interfaces explicitly.
+### 3.2. TypeScript & Components
+- **Strictness**: No `any`. Define strict interfaces.
+- **Component Structure**:
   ```tsx
-  interface Props {
-    project: Project;
-    isVisible?: boolean;
+  import { motion } from "motion/react";
+  import "../../styles/ui/MyComponent.css";
+
+  interface MyComponentProps {
+    title: string;
+    isActive?: boolean;
+  }
+
+  export default function MyComponent({ title, isActive = false }: MyComponentProps) {
+    return (
+      <div className={`my-component ${isActive ? "active" : ""}`}>
+        <h1>{title}</h1>
+      </div>
+    );
   }
   ```
-
-### 3.3. React Components
+- **Props**: Extend standard HTML attributes when applicable (e.g., `HTMLMotionProps<"button">`).
 - **Naming**: PascalCase for components (`ProjectCard.tsx`), camelCase for hooks (`useScroll.ts`).
-- **Routing**: Use `useNavigate`, `useLocation`, and `Outlet`.
-- **State**: Use controlled inputs. Avoid complex `useEffect` chains; prefer derived state.
-- **Context**: Use Context for global UI states to avoid prop drilling.
+- **Exports**: Prefer `export default function`.
 
-### 3.4. Imports
-**Order of imports is strict:**
+### 3.3. Imports Order
 1. External libraries (`react`, `motion/react`, `react-router-dom`)
-2. Internal Context/Hooks (`../context/`, `../hooks/`)
-3. UI Components (`../components/ui/`)
-4. Feature Components (`../components/pages/`)
-5. Styles (`../../styles/ProjectCard.css`)
+2. Internal Context/Hooks (`../context/...`, `../hooks/...`)
+3. UI Components (`../components/ui/...`)
+4. Feature Components (`../components/pages/...`)
+5. Styles (`../../styles/ui/Name.css`)
 6. Assets/Types
 
-**Paths**: Use relative paths (e.g., `../../components`).
+**Paths**: Use relative paths (e.g., `../../components/ui/Button`). Do not use aliases unless configured.
 
-### 3.5. Error Handling
+### 3.4. Error Handling
 - **API Calls**: Wrap async calls in `try/catch`.
-- **User Feedback**: Use `sonner` (`toast.success`, `toast.error`) for notifications.
-- **Logging**: Log detailed errors to console, but show user-friendly messages.
+- **User Feedback**: Use `sonner` for toast notifications.
+  ```tsx
+  import { toast } from "sonner";
+  // ...
+  toast.error("Failed to load project");
+  ```
 
 ## 4. Directory Structure
 
-- **`functions/`**: Cloudflare Pages Functions (API).
+- **`functions/`**: Cloudflare Pages Functions (Serverless API).
 - **`src/components/`**:
-  - **`ui/`**: Core primitives (Button, Link, Input). **Prefer these.**
-  - **`pages/`**: Page-specific components.
+  - **`ui/`**: Core primitives (Button, Link, Input). **Check here first before building new UI.**
+  - **`pages/`**: Components specific to a single page (e.g., `HomeHero`).
+  - **`layout/`**: Global layout components (Header, Footer).
+- **`src/context/`**: Global state (Context API).
+- **`src/hooks/`**: Custom React hooks.
+- **`src/pages/`**: Top-level Route components.
+- **`src/styles/`**:
   - **`layout/`**: Header, Footer.
-- **`src/context/`**: Global state (e.g., `PageExitContext`).
-- **`src/pages/`**: Route components (`Home.tsx`).
-- **`src/styles/`**: Global (`App.css`) and component stylesheets.
-- **`src/sanityClient.ts`**: Sanity CMS config.
+  - **`pages/`**: Page-specific styles.
+  - **`ui/`**: Reusable UI component styles.
+  - **`features/`**: Feature-specific styles.
+- **`src/types/`**: Shared TypeScript definitions.
 
 ## 5. Workflow & Git
 
-- **Commits**: Conventional commits (`feat:`, `fix:`, `style:`, `refactor:`).
-- **Validation**:
-  - Run `pnpm lint` and `pnpm build` before every commit.
+- **Commits**: Use Conventional Commits (`feat:`, `fix:`, `style:`, `refactor:`, `docs:`).
+- **Validation**: Run `pnpm lint` and `pnpm build` before every commit.
 - **Secrets**: NEVER commit secrets. Use `.env` (prefixed `VITE_`) or Cloudflare Dashboard.
 
-## 6. Agent Instructions
+## 6. Agent Instructions (Meta)
 
-When modifying this codebase:
-1. **Read Context**: Always read the file AND its imports first.
-2. **Match Style**: Indentation (2 spaces), "Sharp" design (0 border-radius).
-3. **Dependencies**: Check `package.json` before importing new libs.
-4. **Safety**: When implementing navigation blocking, use `startTransition`.
-5. **Sanity**: Ensure GROQ queries match schema.
+When you (the agent) are modifying this codebase:
+
+1.  **Read Before Write**: Always read the target file and its imports first to understand context.
+2.  **Check Existing Styles**: Read the corresponding CSS file in `src/styles/` before adding new classes.
+3.  **Proactiveness**: If a component needs a new variant, check if it can be added to the existing UI component first.
+4.  **Safety**:
+    -   Do not revert changes unless explicitly asked or fixing a regression.
+    -   Verify the build passes after changes.
+5.  **Sanity Queries**: Ensure GROQ queries in `sanityClient.ts` or components match the actual schema.
 
 ---
-*Updated for Jade Portfolio Frontend - Jan 2026*
+*Updated Jan 2026*

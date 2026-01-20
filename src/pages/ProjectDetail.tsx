@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { FaChevronLeft } from "react-icons/fa6";
-import { client, urlFor } from "../sanityClient";
+import { useParams } from "react-router-dom";
+import { motion, type Variants } from "motion/react";
+import { client } from "../sanityClient";
 import SEO from "../components/SEO";
+import { usePageExitAnimation } from "../hooks/usePageExitAnimation";
 import type { Project } from "../types";
-import "../styles/ProjectDetail.css";
+import ProjectLayout1 from "../components/pages/project/ProjectLayout1/index";
+import "../styles/pages/ProjectDetail.css";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const [projectData, setProjectData] = useState<Project | null>(null);
-  const [loading, setLoading] = useState(!!slug);
   const [error, setError] = useState<string | null>(null);
+  const { isExiting, handleExitComplete } = usePageExitAnimation();
 
   useEffect(() => {
     if (!slug) {
@@ -21,6 +23,7 @@ export default function ProjectDetail() {
       _id,
       layout,
       titre,
+      subtitle,
       short_description,
       long_description,
       mainImage,
@@ -34,82 +37,46 @@ export default function ProjectDetail() {
       .fetch(query, { slug })
       .then((data) => {
         setProjectData(data);
-        setLoading(false);
       })
       .catch((err) => {
         console.error("Erreur lors du fetch du projet:", err);
         setError("Erreur lors du chargement du projet");
-        setLoading(false);
       });
   }, [slug]);
 
-  if (loading) {
-    return (
-      <>
-        <SEO title="Chargement..." description="Chargement du projet" />
-        <div className="project-detail-loading">
-          <p>Chargement...</p>
-        </div>
-      </>
-    );
-  }
-
   if (!slug || error || !projectData) {
-    return (
-      <>
-        <SEO title="Erreur" description="Projet non trouvé" />
-        <div className="project-detail-error">
-          <p>Erreur : {error || "Projet non trouvé"}</p>
-        </div>
-      </>
-    );
+    return null;
   }
 
+  const pageVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
+
+  // Determine layout - default to layout_1 if not specified or unknown
+  // In the future, this can switch on projectData.layout
   return (
-    <>
+    <motion.div
+      initial="hidden"
+      animate={isExiting ? "exit" : "visible"}
+      variants={pageVariants}
+      onAnimationComplete={handleExitComplete}
+    >
       <SEO
         title={projectData.titre || "Projet"}
         description={projectData.short_description || "Détails du projet"}
       />
-      <div className="project-detail">
-        <Link to={`/projets`} className="project-back-link">
-          <FaChevronLeft />
-        </Link>
-
-        {projectData.categorie && (
-          <div className="project-category">
-            {projectData.categorie.nom.toUpperCase()}
-          </div>
-        )}
-
-        <header className="project-editorial-header">
-          <div className="project-header-left">
-            <h1 className="project-title">{projectData.titre}</h1>
-            {projectData.short_description && (
-              <h2 className="project-subtitle">{projectData.short_description}</h2>
-            )}
-          </div>
-          <div className="project-header-texts">
-            {projectData.long_description && (
-              <div className="project-description-text">
-                {projectData.long_description}
-              </div>
-            )}
-          </div>
-        </header>
-
-        <div className="project-detail-content">
-          <div className="project-main-image-section">
-            {projectData.mainImage && (
-              <img
-                src={urlFor(projectData.mainImage).width(1200).url()}
-                alt={projectData.titre || ""}
-                className="project-main-image"
-              />
-            )}
-          </div>
-        </div>
-      </div>
-    </>
+      <ProjectLayout1 project={projectData} />
+    </motion.div>
   );
 }

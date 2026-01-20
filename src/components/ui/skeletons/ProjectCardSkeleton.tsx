@@ -1,4 +1,4 @@
-import "../../../styles/Skeleton.css";
+import "../../../styles/ui/Skeleton.css";
 
 export default function ProjectCardSkeleton() {
   return (

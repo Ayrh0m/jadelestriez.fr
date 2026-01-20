@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { FiSearch, FiX } from "react-icons/fi";
-import "../../../styles/FilterSearch.css";
+import "../../../styles/features/FilterSearch.css";
 
 interface FilterSearchProps {
   onSearchChange: (searchTerm: string) => void;

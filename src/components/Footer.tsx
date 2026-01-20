@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import Link from "./ui/Link";
 import SocialIcon from "./ui/SocialIcon";
-import "../styles/Footer.css";
+import "../styles/layout/Footer.css";
 import { usePageExitContext } from "../context/PageExitContext";
 
 export default function Footer() {

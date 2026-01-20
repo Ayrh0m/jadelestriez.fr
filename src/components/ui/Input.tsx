@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes, TextareaHTMLAttributes } from "react";
-import "../../styles/Input.css";
+import "../../styles/ui/Input.css";
 
 // Input Interface
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {

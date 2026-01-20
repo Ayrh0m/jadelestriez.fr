@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import "../styles/Home.css";
+import "../styles/pages/Home.css";
 import SEO from "../components/SEO";
 import { usePageExitAnimation } from "../hooks/usePageExitAnimation";
 import HomeTextures from "../components/pages/home/HomeTextures";

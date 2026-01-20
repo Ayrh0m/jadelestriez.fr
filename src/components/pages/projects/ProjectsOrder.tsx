@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { BsSortDown, BsSortUp } from "react-icons/bs";
-import "../../../styles/ProjectsOrder.css";
+import "../../../styles/features/ProjectsOrder.css";
 
 interface ProjectsOrderProps {
   order: "desc" | "asc";

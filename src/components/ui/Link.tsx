@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import type { HTMLMotionProps } from "motion/react";
 import type { ReactNode } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import "../../styles/Link.css";
+import "../../styles/ui/Link.css";
 
 interface CustomLinkProps extends HTMLMotionProps<"a"> {
   href: string;
@@ -11,7 +11,7 @@ interface CustomLinkProps extends HTMLMotionProps<"a"> {
   external?: boolean;
 }
 
-const MotionRouterLink = motion(RouterLink);
+const MotionRouterLink = motion.create(RouterLink);
 
 export default function Link({ 
   href, 

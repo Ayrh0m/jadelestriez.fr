@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import type { HTMLMotionProps } from "motion/react";
-import "../../styles/Link.css";
+import "../../styles/ui/Link.css";
 
 interface FilterLinkProps extends HTMLMotionProps<"button"> {
   isActive?: boolean;

@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import "../../styles/Design.css"; // Reuse existing styles or create new ones if needed
+import "../../styles/pages/Design.css"; // Reuse existing styles or create new ones if needed
 
 interface ColorCardProps {
   color: string;

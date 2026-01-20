@@ -1,0 +1,10 @@
+.project-detail-loading,
+.project-detail-error {
+  padding: 2rem;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  color: var(--color-foreground);
+}

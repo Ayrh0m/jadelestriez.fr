@@ -1,19 +1,19 @@
 import { motion } from "motion/react";
 import Link from "./ui/Link";
 import logo from "../assets/images/JADE.svg";
-import "../styles/Header.css";
+import "../styles/layout/Header.css";
 import { usePageExitContext } from "../context/PageExitContext";
 
 export default function Header() {
   const { shouldLayoutExit } = usePageExitContext();
 
   return (
-    <motion.header 
+    <motion.header
       className="header"
       initial={{ opacity: 0 }}
       animate={{ opacity: shouldLayoutExit ? 0 : 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.2 }}
     >
       <div className="logo">
         <Link href="/">

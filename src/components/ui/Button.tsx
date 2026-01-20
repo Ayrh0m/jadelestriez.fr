@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import type { HTMLMotionProps } from "motion/react";
 import type { ReactNode } from "react";
-import "../../styles/Button.css"; // We will move button styles here
+import "../../styles/ui/Button.css"; // We will move button styles here
 
 type ButtonVariant = 
   | "primary" 

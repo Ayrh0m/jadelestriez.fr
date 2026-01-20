@@ -4,7 +4,7 @@ import ContactHeader from "../components/pages/contact/ContactHeader";
 import ContactForm from "../components/pages/contact/ContactForm";
 import ContactSocials from "../components/pages/contact/ContactSocials";
 import { usePageExitAnimation } from "../hooks/usePageExitAnimation";
-import "../styles/Contact.css";
+import "../styles/pages/Contact.css";
 
 export default function Contact() {
   const { isExiting, handleExitComplete } = usePageExitAnimation();

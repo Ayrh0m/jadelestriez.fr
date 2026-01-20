@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { urlFor } from "../../../sanityClient";
 import type { Project } from "../../../types";
-import "../../../styles/ProjectCard.css";
+import "../../../styles/features/ProjectCard.css";
 
 interface ProjectCardProps {
   project: Project;

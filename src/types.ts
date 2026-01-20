@@ -5,6 +5,7 @@ export interface Project {
   _createdAt?: string;
   layout: string;
   titre: string;
+  subtitle?: string;
   slug: string;
   short_description?: string;
   long_description?: string;

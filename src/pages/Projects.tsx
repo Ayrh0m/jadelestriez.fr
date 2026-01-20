@@ -3,7 +3,7 @@ import { client } from "../sanityClient";
 import { motion } from "motion/react";
 import SEO from "../components/SEO";
 import type { Project } from "../types";
-import "../styles/Projects.css";
+import "../styles/pages/Projects.css";
 import projets from "../assets/images/PROJETS.svg";
 import Footer from "../components/Footer";
 import ProjectFilters from "../components/pages/projects/ProjectFilters";

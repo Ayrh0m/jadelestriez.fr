@@ -4,7 +4,7 @@ import FilterLink from "../../ui/FilterLink";
 import FilterSearch from "./FilterSearch";
 import ProjectsOrder from "./ProjectsOrder";
 import type { Categorie } from "../../../types";
-import "../../../styles/ProjectFilters.css";
+import "../../../styles/features/ProjectFilters.css";
 
 interface ProjectFiltersProps {
   selectedCategory: string;
