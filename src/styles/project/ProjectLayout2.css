@@ -8,35 +8,47 @@
 
 .layout2-container {
   padding: 6rem 2rem 4rem;
-  max-width: 1800px;
-  margin: 0 auto;
   width: 100%;
 }
 
+.layout2-outer {
+  background-color: var(--color-foreground);
+  width: 100%;
+  padding: 1px;
+}
+
+.layout2-inner {
+  background-color: var(--color-background);
+  border-radius: 20px; /* Ne pas changer */
+  width: 100%;
+  padding: 2rem;
+}
+
 .layout2-header {
-  margin-bottom: 4rem;
-  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .project-layout-2 .project-title {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-size: 4.2rem;
   text-transform: uppercase;
+  font-weight: bold;
   color: var(--color-foreground);
   margin: 0;
 }
 
 .layout2-content {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr 1.5fr;
-  gap: 3rem;
-  align-items: start;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 70dvh;
+  overflow: hidden;
 }
 
 /* Main Image - Left Column */
 .project-layout2-main-image {
-  width: 100%;
-  aspect-ratio: 4/5;
+  flex-basis: 25%;
   overflow: hidden;
 }
 
@@ -49,6 +61,7 @@
 
 /* Text Content - Middle Column */
 .project-layout2-text-content {
+  flex-basis: 25%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -65,23 +78,29 @@
 
 .project-layout-2 .project-description-text {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: .9rem;
   line-height: 1.6;
   color: var(--color-foreground);
   white-space: pre-line;
-  text-align: justify;
 }
 
 /* Gallery - Right Column */
 .project-layout2-gallery {
+  flex-basis: 50%;
   display: grid;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.project-layout2-gallery.grid-cols-2 {
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+}
+
+.project-layout2-gallery.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .gallery-item {
   width: 100%;
-  aspect-ratio: 1;
   overflow: hidden;
 }
 
@@ -90,11 +109,6 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
 }
 
 /* Responsive */

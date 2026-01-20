@@ -10,14 +10,19 @@ export default function MainImage({ project }: MainImageProps) {
   if (!project.mainImage) return null;
 
   return (
-    <motion.div 
+    <motion.div
       className="project-layout2-main-image"
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8 }}
     >
       <img
-        src={urlFor(project.mainImage).width(800).url()}
+        src={urlFor(project.mainImage)
+          .width(600)
+          .height(1200)
+          .format("webp")
+          .quality(90)
+          .url()}
         alt={project.titre}
         loading="lazy"
       />
