@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import { client } from "../sanityClient";
 import { motion } from "motion/react";
 import SEO from "../components/SEO";
@@ -12,6 +13,9 @@ import ProjectCardSkeleton from "../components/ui/skeletons/ProjectCardSkeleton"
 import { usePageExitAnimation } from "../hooks/usePageExitAnimation";
 
 export default function Projects() {
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get("categorie");
+  
   const [projects, setProjects] = useState<Project[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState<string>("Tous");
@@ -19,6 +23,39 @@ export default function Projects() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
   const [order, setOrder] = useState<"desc" | "asc">("desc");
   const { isExiting, handleExitComplete } = usePageExitAnimation();
+
+  // Set initial category from URL param if available
+  useEffect(() => {
+    if (initialCategory) {
+      // We will validate if the category exists after loading projects/categories 
+      // or we can rely on string comparison since categories are fetched in ProjectFilters
+      // For now, let's assume if it's passed it might be valid, but we need to match it 
+      // with available categories which we don't strictly have here (they are in ProjectFilters)
+      // However, ProjectFilters receives selectedCategory.
+      
+      // Let's verify this category actually exists when we filter or simply trust the URL param 
+      // and let the filter logic handle "no results" if invalid, 
+      // BUT the requirement says "if no filter has the value, show Tous".
+      // Since categories are dynamic, we need to know them to validate.
+      // Let's do a simple check: we'll set it here, and if it matches nothing in the UI 
+      // (ProjectFilters), we might want to handle that. 
+      // Actually, ProjectFilters component fetches categories. 
+      // Let's pass the URL param slug handling logic.
+      
+      // Since selectedCategory stores the NAME of the category (e.g. "Graphisme")
+      // and the URL param stores the SLUG (e.g. "graphisme"), we need to map slug -> name.
+      // We don't have categories here. We can fetch them or rely on projects data.
+      
+      // Better approach: Fetch categories here too or fetch projects first and find the category name from a project?
+      // No, let's fetch categories here to map slug to name.
+      const query = `*[_type == "categorie" && slug.current == $slug][0].nom`;
+      client.fetch(query, { slug: initialCategory }).then(nom => {
+        if (nom) {
+          setSelectedCategory(nom);
+        }
+      });
+    }
+  }, [initialCategory]);
 
   // Debounce search term update
   useEffect(() => {

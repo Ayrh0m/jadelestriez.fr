@@ -14,13 +14,16 @@ export function usePageExitAnimation() {
   // Block navigation to trigger exit animation
   const blocker = useBlocker(
     ({ currentLocation, nextLocation }) =>
-      !isExiting && currentLocation.pathname !== nextLocation.pathname
+      !isExiting && 
+      (currentLocation.pathname !== nextLocation.pathname || 
+       currentLocation.search !== nextLocation.search)
   );
 
   // Handle blocked navigation
   useEffect(() => {
     if (blocker.state === "blocked") {
-      const nextPath = blocker.location.pathname;
+      // Reconstruct full path including search params
+      const nextPath = blocker.location.pathname + blocker.location.search;
       nextLocationRef.current = nextPath;
       
       // Check if we are navigating to a project detail page
