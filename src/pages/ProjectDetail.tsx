@@ -7,6 +7,7 @@ import { usePageExitAnimation } from "../hooks/usePageExitAnimation";
 import type { Project } from "../types";
 import ProjectLayout1 from "../components/pages/project/ProjectLayout1/index";
 import ProjectLayout2 from "../components/pages/project/ProjectLayout2/index";
+import ProjectLayout3 from "../components/pages/project/ProjectLayout3/index";
 import "../styles/pages/ProjectDetail.css";
 
 export default function ProjectDetail() {
@@ -29,6 +30,7 @@ export default function ProjectDetail() {
       long_description,
       mainImage,
       gallery,
+      labeled_gallery,
       categorie->{
         nom,
         "slug": slug.current
@@ -67,6 +69,8 @@ export default function ProjectDetail() {
 
   const renderLayout = () => {
     switch (projectData.layout) {
+      case "layout_3":
+        return <ProjectLayout3 project={projectData} />;
       case "layout_2":
         return <ProjectLayout2 project={projectData} />;
       case "layout_1":

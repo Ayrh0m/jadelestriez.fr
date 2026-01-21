@@ -16,6 +16,11 @@ export interface Project {
   thumbnail: SanityImageSource;
   mainImage: SanityImageSource;
   gallery?: SanityImageSource[];
+  labeled_gallery?: {
+    _key: string;
+    label: string;
+    image: SanityImageSource;
+  }[];
 }
 
 export interface Categorie {

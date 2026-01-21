@@ -1,0 +1,28 @@
+import LabeledImage from "./LabeledImage";
+import type { SanityImageSource } from "../../../../sanityClient";
+
+interface LabeledGalleryItem {
+  _key: string;
+  label: string;
+  image: SanityImageSource;
+}
+
+interface LabeledGalleryProps {
+  items: LabeledGalleryItem[];
+}
+
+export default function LabeledGallery({ items }: LabeledGalleryProps) {
+  if (!items || items.length === 0) return null;
+
+  return (
+    <div className="layout3-gallery">
+      {items.map((item) => (
+        <LabeledImage 
+          key={item._key} 
+          image={item.image} 
+          label={item.label} 
+        />
+      ))}
+    </div>
+  );
+}
