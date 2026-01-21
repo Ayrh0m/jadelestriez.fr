@@ -11,8 +11,6 @@ interface GalleryProps {
 export default function Gallery({ project }: GalleryProps) {
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
-  if (!project.gallery || project.gallery.length === 0) return null;
-
   // Determine number of columns based on image count
   // 4 images -> 2 cols x 2 rows
   // 5-6 images -> 3 cols x 2 rows

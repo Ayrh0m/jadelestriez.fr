@@ -14,18 +14,18 @@ export interface ProjectBase {
 
 export interface ProjectLayout1 extends ProjectBase {
   layout: "layout_1";
-  subtitle?: string;
-  short_description?: string;
-  long_description?: string;
+  subtitle: string;
+  short_description: string;
+  long_description: string;
   mainImage: SanityImageSource;
 }
 
 export interface ProjectLayout2 extends ProjectBase {
   layout: "layout_2";
-  subtitle?: string;
-  long_description?: string;
+  subtitle: string;
+  long_description: string;
   mainImage: SanityImageSource;
-  gallery?: SanityImageSource[];
+  gallery: SanityImageSource[];
 }
 
 export interface LabeledGalleryItem {
@@ -36,9 +36,9 @@ export interface LabeledGalleryItem {
 
 export interface ProjectLayout3 extends ProjectBase {
   layout: "layout_3";
-  subtitle?: string;
-  long_description?: string;
-  labeled_gallery?: LabeledGalleryItem[];
+  subtitle: string;
+  long_description: string;
+  labeled_gallery: LabeledGalleryItem[];
 }
 
 export type Project = ProjectLayout1 | ProjectLayout2 | ProjectLayout3;

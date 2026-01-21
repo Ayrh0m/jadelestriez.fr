@@ -11,8 +11,6 @@ interface MainImageProps {
 export default function MainImage({ project }: MainImageProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  if (!project.mainImage) return null;
-
   const lightboxUrl = urlFor(project.mainImage)
     .width(1920)
     .quality(100)

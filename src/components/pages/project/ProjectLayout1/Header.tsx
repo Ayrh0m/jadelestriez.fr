@@ -21,29 +21,23 @@ export default function Header({ project }: HeaderProps) {
         <motion.h1 className="project-title" variants={itemVariants}>
           {project.titre}
         </motion.h1>
-        {project.subtitle && (
-          <motion.h2 className="project-subtitle" variants={itemVariants}>
-            {project.subtitle}
-          </motion.h2>
-        )}
+        <motion.h2 className="project-subtitle" variants={itemVariants}>
+          {project.subtitle}
+        </motion.h2>
       </div>
       <div className="project-header-texts">
-        {project.short_description && (
-          <motion.div
-            className="project-short-description"
-            variants={itemVariants}
-          >
-            {project.short_description}
-          </motion.div>
-        )}
-        {project.long_description && (
-          <motion.div
-            className="project-description-text"
-            variants={itemVariants}
-          >
-            {project.long_description}
-          </motion.div>
-        )}
+        <motion.div
+          className="project-short-description"
+          variants={itemVariants}
+        >
+          {project.short_description}
+        </motion.div>
+        <motion.div
+          className="project-description-text"
+          variants={itemVariants}
+        >
+          {project.long_description}
+        </motion.div>
       </div>
     </header>
   );

@@ -13,15 +13,11 @@ export default function TextContent({ project }: TextContentProps) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {project.subtitle && (
-        <h2 className="project-subtitle">{project.subtitle}</h2>
-      )}
+      <h2 className="project-subtitle">{project.subtitle}</h2>
       
-      {project.long_description && (
-        <div className="project-description-text">
-          {project.long_description}
-        </div>
-      )}
+      <div className="project-description-text">
+        {project.long_description}
+      </div>
     </motion.div>
   );
 }

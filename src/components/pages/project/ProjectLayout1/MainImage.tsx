@@ -19,33 +19,29 @@ export default function MainImage({ project }: MainImageProps) {
     },
   };
 
-  const imageUrl = project.mainImage
-    ? urlFor(project.mainImage)
-        .width(1920)
-        .quality(100) // High quality for lightbox
-        .format("webp")
-        .url()
-    : "";
+  const imageUrl = urlFor(project.mainImage)
+    .width(1920)
+    .quality(100) // High quality for lightbox
+    .format("webp")
+    .url();
 
   return (
     <>
       <div className="project-main-image-section">
-        {project.mainImage && (
-          <motion.img
-            src={urlFor(project.mainImage)
-              .width(1920)
-              .height(800)
-              .quality(90)
-              .format("webp")
-              .fit("max")
-              .url()}
-            alt={project.titre || ""}
-            className="project-main-image"
-            variants={imageVariants}
-            onClick={() => setIsLightboxOpen(true)}
-            style={{ cursor: "zoom-in" }}
-          />
-        )}
+        <motion.img
+          src={urlFor(project.mainImage)
+            .width(1920)
+            .height(800)
+            .quality(90)
+            .format("webp")
+            .fit("max")
+            .url()}
+          alt={project.titre || ""}
+          className="project-main-image"
+          variants={imageVariants}
+          onClick={() => setIsLightboxOpen(true)}
+          style={{ cursor: "zoom-in" }}
+        />
       </div>
 
       <Lightbox
