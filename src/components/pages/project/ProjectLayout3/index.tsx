@@ -1,10 +1,10 @@
 import Navigation from "../Navigation";
-import type { Project } from "../../../../types";
+import type { ProjectLayout3 } from "../../../../types";
 import LabeledGallery from "./LabeledGallery";
 import "../../../../styles/project/ProjectLayout3.css";
 
 interface ProjectLayout3Props {
-  project: Project;
+  project: ProjectLayout3;
 }
 
 export default function ProjectLayout3({ project }: ProjectLayout3Props) {

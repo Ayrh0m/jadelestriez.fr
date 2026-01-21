@@ -1,11 +1,11 @@
 import Navigation from "../Navigation";
 import Header from "./Header";
 import MainImage from "./MainImage";
-import type { Project } from "../../../../types";
+import type { ProjectLayout1 } from "../../../../types";
 import "../../../../styles/project/ProjectLayout1.css";
 
 interface ProjectLayout1Props {
-  project: Project;
+  project: ProjectLayout1;
 }
 
 export default function ProjectLayout1({ project }: ProjectLayout1Props) {

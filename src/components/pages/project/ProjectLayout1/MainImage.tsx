@@ -1,11 +1,11 @@
 import { motion, type Variants } from "motion/react";
 import { useState } from "react";
 import { urlFor } from "../../../../sanityClient";
-import type { Project } from "../../../../types";
+import type { ProjectLayout1 } from "../../../../types";
 import Lightbox from "../../../ui/Lightbox";
 
 interface MainImageProps {
-  project: Project;
+  project: ProjectLayout1;
 }
 
 export default function MainImage({ project }: MainImageProps) {

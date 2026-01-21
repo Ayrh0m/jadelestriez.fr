@@ -1,8 +1,8 @@
 import { motion, type Variants } from "motion/react";
-import type { Project } from "../../../../types";
+import type { ProjectLayout1 } from "../../../../types";
 
 interface HeaderProps {
-  project: Project;
+  project: ProjectLayout1;
 }
 
 export default function Header({ project }: HeaderProps) {

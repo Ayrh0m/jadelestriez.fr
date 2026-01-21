@@ -2,11 +2,11 @@ import Navigation from "../Navigation";
 import MainImage from "./MainImage";
 import TextContent from "./TextContent";
 import Gallery from "./Gallery";
-import type { Project } from "../../../../types";
+import type { ProjectLayout2 } from "../../../../types";
 import "../../../../styles/project/ProjectLayout2.css";
 
 interface ProjectLayout2Props {
-  project: Project;
+  project: ProjectLayout2;
 }
 
 export default function ProjectLayout2({ project }: ProjectLayout2Props) {

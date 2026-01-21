@@ -33,6 +33,9 @@ export default function HomeLatestProjects({ latestProject }: HomeLatestProjects
     },
   };
 
+  // Safe access to mainImage as it might not exist in all layouts (e.g. Layout 3)
+  const mainImage = 'mainImage' in latestProject ? latestProject.mainImage : undefined;
+
   return (
     <motion.div 
       className="latest-projects" 
@@ -40,10 +43,10 @@ export default function HomeLatestProjects({ latestProject }: HomeLatestProjects
       variants={containerVariants}
     >
       <motion.div className="latest-project-card" variants={itemVariants}>
-        {latestProject.mainImage && (
+        {mainImage && (
           <Link to={`/projets/${latestProject.slug}`}>
             <motion.img
-              src={urlFor(latestProject.mainImage)
+              src={urlFor(mainImage)
                 .width(850)
                 .height(1000)
                 .format("webp")

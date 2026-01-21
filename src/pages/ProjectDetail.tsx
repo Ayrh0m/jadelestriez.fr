@@ -70,14 +70,22 @@ export default function ProjectDetail() {
   const renderLayout = () => {
     switch (projectData.layout) {
       case "layout_3":
-        return <ProjectLayout3 project={projectData} />;
+        // Type assertion needed because we know layout is layout_3 but TS might not infer strict ProjectLayout3 if projectData is Project
+        return <ProjectLayout3 project={projectData as any} />;
       case "layout_2":
-        return <ProjectLayout2 project={projectData} />;
+        return <ProjectLayout2 project={projectData as any} />;
       case "layout_1":
       default:
-        return <ProjectLayout1 project={projectData} />;
+        return <ProjectLayout1 project={projectData as any} />;
     }
   };
+
+  const description =
+    projectData.layout === "layout_1"
+      ? projectData.short_description || "Détails du projet"
+      : projectData.long_description
+      ? projectData.long_description.slice(0, 160)
+      : "Détails du projet";
 
   return (
     <motion.div
@@ -88,7 +96,7 @@ export default function ProjectDetail() {
     >
       <SEO
         title={projectData.titre || "Projet"}
-        description={projectData.short_description || "Détails du projet"}
+        description={description}
       />
       {renderLayout()}
     </motion.div>
