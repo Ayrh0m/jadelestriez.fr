@@ -8,7 +8,7 @@
   flex-direction: column;
   background-color: var(--color-background);
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; /* Permet le scroll vertical mais cache le débordement horizontal */
 }
 
 /* Header au-dessus de l'image */
@@ -88,26 +88,56 @@
 /* Responsive */
 @media (max-width: 1024px) {
   .project-editorial-header {
-    grid-template-columns: 1fr;
+    height: auto;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 6rem 2rem 2rem 2rem;
+  }
+
+  .project-header-left {
+    flex-basis: auto;
+    gap: 0.5rem;
+  }
+
+  .project-header-texts {
+    flex-basis: auto;
+    flex-direction: column;
     gap: 2rem;
-    padding-top: 6rem;
   }
   
   .project-title {
-    font-size: 3rem;
+    font-size: 2.8rem;
+  }
+
+  .project-subtitle {
+    font-size: 1.3rem;
+  }
+
+  /* Ajuster la hauteur de l'image pour tablette */
+  .project-main-image-section {
+    height: 50vh;
   }
 }
 
 @media (max-width: 768px) {
-  .project-main-image-section {
-    height: 50vh;
+  .project-editorial-header {
+    padding: 8rem .5rem .5rem .5rem;
+    gap: 2rem;
   }
-  
+
   .project-title {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   
   .project-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  .project-header-texts {
+    gap: 2rem;
+  }
+
+  main.content.no-header-footer {
+    overflow: visible;
   }
 }

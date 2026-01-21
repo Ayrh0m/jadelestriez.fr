@@ -1,0 +1,11 @@
+uid=2_0 RootWebArea "Projet Simple - Layout 1 | Jade Lestriez" url="http://localhost:5173/projets/projet-simple-layout-1"
+  uid=2_1 region "Notifications alt+T"
+  uid=2_2 main
+    uid=2_3 link url="http://localhost:5173/projets"
+    uid=2_4 link "COMMUNICATION" url="http://localhost:5173/projets?categorie=communication"
+      uid=2_5 StaticText "COMMUNICATION"
+    uid=2_6 heading "PROJET SIMPLE - LAYOUT 1" level="1"
+    uid=2_7 heading "Test du projet pour l'affichage" level="2"
+    uid=2_8 StaticText "Pastry fruitcake chocolate cake sugar plum cookie. Brownie marshmallow jelly-o fruitcake pastry jelly. Lollipop elly. Lollipop pudding pastry gingerbread sweet"
+    uid=2_9 StaticText "Pastry fruitcake chocolate cake sugar plum cookie. Brownie marshmallow jelly-o fruitcake pastry jelly. Lollipop pudding pastry gingerbread sweet roll sweet roll. Pastry fruitcake chocolate cake sugar plum cookie. Brownie marshmallow jelly-o fruitcake pastry jelly. Lollipop pudding pastry gingerbread sweet roll sweet roll. allow jelly-o fruitcake pastry jelly. Lollipop pudding pastry gingerbread sweet roll sweet roll.allow jelly-o fruitcake pastry jelly. Lollipop pudding pastry gingerbread sweet"
+    uid=2_10 image "Projet Simple - Layout 1" url="https://cdn.sanity.io/images/hkvy3bqb/production/330cb860498e1ea13378a8da3f0fe7d886390d94-1200x1500.jpg?rect=0,74,1200,500&w=1920&h=800&fm=webp&q=90&fit=max"
