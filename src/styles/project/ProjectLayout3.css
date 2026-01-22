@@ -22,7 +22,8 @@
 
 .layout3-inner {
   background-color: var(--color-background);
-  border-radius: 20px; /* Ne pas changer */
+  border-radius: 20px;
+  /* Ne pas changer */
   width: 100%;
   padding: 2rem;
   display: flex;
@@ -160,42 +161,228 @@
 
 .labeled-image-card:nth-child(4) {
   top: 5%;
-  right: 2%;
-  height: 440px;
+  right: -1%;
+  height: 410px;
+}
+
+@media screen and (max-width: 1400px) {
+  .labeled-image-card:nth-child(1) {
+    height: 330px;
+  }
+
+  .labeled-image-card:nth-child(2) {
+    height: 370px;
+  }
+
+  .labeled-image-card:nth-child(3) {
+    height: 380px;
+  }
+
+  .labeled-image-card:nth-child(4) {
+    height: 350px;
+  }
+
+  .layout3-header {
+    width: 25%;
+  }
+
+  .project-layout-3 .project-description-text {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1154px) {
+  .labeled-image-card:nth-child(1) {
+    height: 310px;
+  }
+
+  .labeled-image-card:nth-child(2) {
+    height: 340px;
+  }
+
+  .labeled-image-card:nth-child(3) {
+    height: 350px;
+    right: 23%;
+    z-index: 300;
+  }
+
+  .labeled-image-card:nth-child(4) {
+    height: 320px;
+    top: 15%;
+  }
+
+  .layout3-header {
+    width: 25%;
+    left: 15%;
+  }
+
+  .project-layout-3 .project-description-text {
+    width: 80%;
+  }
 }
 
 
 /* Responsive */
-@media (max-width: 1024px) {
-  .layout3-container {
-    padding: 6rem 2rem 2rem 2rem;
+@media screen and (max-width: 964px) {
+
+  .labeled-image-card:nth-child(1) {
+    height: 280px;
+  }
+
+  .labeled-image-card:nth-child(2) {
+    height: 300px;
+  }
+
+  .labeled-image-card:nth-child(3) {
+    height: 310px;
+  }
+
+  .labeled-image-card:nth-child(4) {
+    height: 290px;
   }
 
   .layout3-header {
-    margin-bottom: 4rem;
+    width: 30%;
+    left: 20%;
   }
 
-  .layout3-gallery {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+  .project-layout-3 .project-description-text {
+    width: 100%;
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 874px) {
+  .labeled-image-card {
+    gap: 0;
+  }
+
+  .labeled-image-title {
+    font-size: .9rem;
+    padding: .5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  .labeled-image-wrapper {
+    padding: 1rem;
+  }
+
+  .labeled-image-card:nth-child(1) {
+    height: 250px;
+    top: 0;
+    z-index: 140;
+  }
+
+  .labeled-image-card:nth-child(2) {
+    height: 270px;
+    left: 3%;
+    top: 29%;
+    z-index: 130;
+  }
+
+  .labeled-image-card:nth-child(3) {
+    height: 270px;
+    left: 35%;
+    top: 5%;
+    z-index: 150;
+  }
+
+  .labeled-image-card:nth-child(4) {
+    height: 260px;
+    right: 2%;
+    top: 17%;
+    z-index: 120;
+  }
+
+  .layout3-header {
+    width: 30%;
+    left: 5%;
+    bottom: 20%;
+  }
+
   .project-layout-3 .project-title {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
   }
 
   .project-layout-3 .project-subtitle {
     font-size: 1.2rem;
   }
 
-  .layout3-gallery {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  .project-layout-3 .project-description-text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 758px) {
+  .labeled-image-title {
+    padding-bottom: 1rem;
   }
 
-  .labeled-image-title {
-    font-size: 1rem;
+  .labeled-image-card:nth-child(1) {
+    height: 240px;
+  }
+
+  .labeled-image-card:nth-child(2) {
+    height: 250px;
+    z-index: 130;
+  }
+
+  .labeled-image-card:nth-child(3) {
+    height: 250px;
+    top: 2%;
+  }
+
+  .labeled-image-card:nth-child(4) {
+    height: 240px;
+  }
+
+  .layout3-header {
+    width: 40%;
+    left: 10%;
+    bottom: 15%;
+  }
+
+  .project-layout-3 .project-title {
+    font-size: 1.9rem;
+  }
+
+  .project-layout-3 .project-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .project-layout-3 .project-description-text {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .project-layout-3 {
+    padding: 6rem 1rem 2rem 1rem;
+  }
+
+  .layout3-inner {
+    padding: 1rem;
+  }
+
+  .layout3-gallery {
+    position: static;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .layout3-container {
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  .layout3-header {
+    width: 50%;
+    position: static;
+    align-self: flex-start;
+  }
+
+  .labeled-image-card {
+    position: static;
+    height: 200px!important;
   }
 }

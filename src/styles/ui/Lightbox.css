@@ -24,10 +24,13 @@
   object-fit: contain;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   display: block;
+  position: relative;
+  z-index: 1000;
 }
 
 .lightbox-close {
   position: absolute;
+  z-index: 1000;
   top: -40px;
   right: 0;
   background: none;
