@@ -1,5 +1,5 @@
 import LabeledImage from "./LabeledImage";
-import type { SanityImageSource } from "../../../../sanityClient";
+import { type SanityImageSource } from "../../../../sanityClient";
 
 interface LabeledGalleryItem {
   _key: string;

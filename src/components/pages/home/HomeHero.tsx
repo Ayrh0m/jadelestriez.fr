@@ -29,7 +29,9 @@ export default function HomeHero() {
   return (
     <motion.section className="home-section" variants={containerVariants}>
       <motion.h1 className="home-title" variants={itemVariants}>
-        Étudiante en communication
+        <span className="home-title-name">Jade Lestriez</span>
+        <br />
+        Communication & Design
       </motion.h1>
       <motion.p className="home-description" variants={itemVariants}>
         Candy icing sugar plum marshmallow sweet candy canes marzipan muffin
