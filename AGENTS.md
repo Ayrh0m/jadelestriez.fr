@@ -10,6 +10,7 @@ Strict adherence to these guidelines is required to maintain the "Sharp" aesthet
 - **Routing**: `react-router-dom` v7 (Data Router pattern)
 - **Backend**: Cloudflare Pages Functions (`functions/`)
 - **CMS**: Sanity CMS (`@sanity/client`)
+- **SEO**: `react-helmet-async` for meta tags
 - **Package Manager**: `pnpm`
 - **Design Philosophy**: "Sharp" aesthetic. **Strictly `border-radius: 0` everywhere**. Minimalist, premium feel.
 
@@ -23,12 +24,12 @@ pnpm run dev      # Starts frontend at http://localhost:5173
 ```
 *Cloudflare Functions locally require `wrangler pages dev`.*
 
-### Building (CRITICAL)
+### Building & Preview (CRITICAL)
 Always run the build before confirming a task is done.
 ```bash
-pnpm run build
+pnpm run build    # Runs tsc -b && vite build
+pnpm run preview  # Previews the production build locally
 ```
-*This runs `tsc -b` (TypeScript Build) followed by `vite build`.*
 
 ### Linting
 Check for code quality and hooks issues. Fix all errors before committing.
@@ -36,7 +37,7 @@ Check for code quality and hooks issues. Fix all errors before committing.
 pnpm run lint
 ```
 
-### Testing (Reference)
+### Testing
 *Note: No testing framework is currently configured in `package.json`.*
 If adding tests or running future tests, assume **Vitest** + **React Testing Library**.
 
@@ -65,6 +66,7 @@ If adding tests or running future tests, assume **Vitest** + **React Testing Lib
 
 ### 3.2. TypeScript & Components
 - **Strictness**: No `any`. Define strict interfaces.
+- **Formatting**: Use **2 spaces** for indentation. Semicolons are required.
 - **Component Structure**:
   ```tsx
   import { motion } from "motion/react";
@@ -97,8 +99,9 @@ If adding tests or running future tests, assume **Vitest** + **React Testing Lib
 
 **Paths**: Use relative paths (e.g., `../../components/ui/Button`). Do not use aliases unless configured.
 
-### 3.4. Error Handling
+### 3.4. Error Handling & Env
 - **API Calls**: Wrap async calls in `try/catch`.
+- **Environment Variables**: Access via `import.meta.env.VITE_VARIABLE`.
 - **User Feedback**: Use `sonner` for toast notifications.
   ```tsx
   import { toast } from "sonner";
@@ -138,8 +141,9 @@ When you (the agent) are modifying this codebase:
 3.  **Proactiveness**: If a component needs a new variant, check if it can be added to the existing UI component first.
 4.  **Safety**:
     -   Do not revert changes unless explicitly asked or fixing a regression.
-    -   Verify the build passes after changes.
+    -   Verify the build passes after changes using `pnpm run build`.
 5.  **Sanity Queries**: Ensure GROQ queries in `sanityClient.ts` or components match the actual schema.
+6.  **Aesthetics**: Always check if a new UI element adheres to the "Sharp" (border-radius: 0) design system.
 
 ---
 *Updated Jan 2026*

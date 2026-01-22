@@ -1,5 +1,4 @@
 // src/components/SEO.tsx
-import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
@@ -15,10 +14,10 @@ export default function SEO({
   url = window.location.href,
 }: SEOProps) {
   const metaImage = image || "/default-og-image.jpg";
-  const siteTitle = "Jade Lestriez";
+  const siteTitle = "Portfolio étudiante en communication";
 
   return (
-    <Helmet>
+    <>
       <title>{`${title} | ${siteTitle}`}</title>
       <meta name="description" content={description} />
 
@@ -32,6 +31,6 @@ export default function SEO({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={metaImage} />
-    </Helmet>
+    </>
   );
 }
