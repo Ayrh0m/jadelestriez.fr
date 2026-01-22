@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { IoClose } from "react-icons/io5";
 import "../../styles/ui/Lightbox.css";
 
@@ -11,6 +12,13 @@ interface LightboxProps {
 }
 
 export default function Lightbox({ isOpen, onClose, imageUrl, altText = "" }: LightboxProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
   // Close on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,7 +36,9 @@ export default function Lightbox({ isOpen, onClose, imageUrl, altText = "" }: Li
     };
   }, [isOpen, onClose]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <AnimatePresence>
       {isOpen && (
         <motion.div
@@ -54,6 +64,7 @@ export default function Lightbox({ isOpen, onClose, imageUrl, altText = "" }: Li
           </motion.div>
         </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
