@@ -12,7 +12,7 @@
 /* Navigation & Elements flottants - Adaptation pour fond clair (header) */
 .project-back-link {
   position: absolute;
-  top: 6rem;
+  top: 2rem;
   left: 2rem;
   z-index: 999;
   color: var(--color-foreground);
@@ -30,7 +30,7 @@
 
 .project-category {
   position: absolute;
-  top: 6rem;
+  top: 2rem;
   right: 2rem;
   font-family: var(--font-body);
   font-size: 1rem;
@@ -47,12 +47,12 @@
 
 @media (max-width: 768px) {
   .project-back-link {
-    top: 5rem;
+    top: 2rem;
     left: 1rem;
   }
 
   .project-category {
-    top: 5.5rem;
+    top: 2rem;
     right: 1rem;
   }
 }
