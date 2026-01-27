@@ -36,3 +36,21 @@
   font-weight: bold;
   font-family: var(--font-heading);
 }
+
+@media screen and (max-width: 768px) {
+  .project-card {
+    height: auto;
+  }
+
+  .project-card-overlay {
+    position: static;
+    opacity: 1!important;
+    margin-bottom: 1rem;
+  }
+
+  .project-card-title {
+    font-size: 1.5rem;
+    font-weight: normal;
+    font-family: var(--font-body);
+  }
+}

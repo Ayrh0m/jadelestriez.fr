@@ -85,4 +85,9 @@
   .projects-title img {
     width: 100%;
   }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    padding-bottom: 0;
+  }
 }
