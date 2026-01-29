@@ -10,6 +10,7 @@ import ProjectLayout1 from "../components/pages/project/ProjectLayout1/index";
 import ProjectLayout2 from "../components/pages/project/ProjectLayout2/index";
 import ProjectLayout3 from "../components/pages/project/ProjectLayout3/index";
 import styles from "../styles/project/ProjectHeader.module.css";
+import Footer from "../components/Footer";
 
 export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -72,13 +73,14 @@ export default function ProjectDetail() {
   const renderLayout = () => {
     switch (projectData.layout) {
       case "layout_3":
-        // Type assertion needed because we know layout is layout_3 but TS might not infer strict ProjectLayout3 if projectData is Project
-        return <ProjectLayout3 project={projectData as any} />;
+        return <ProjectLayout3 project={projectData} />;
       case "layout_2":
-        return <ProjectLayout2 project={projectData as any} />;
+        return <ProjectLayout2 project={projectData} />;
       case "layout_1":
+        return <ProjectLayout1 project={projectData} />;
       default:
-        return <ProjectLayout1 project={projectData as any} />;
+        // Handle unexpected layouts gracefully
+        return null;
     }
   };
 
@@ -86,8 +88,8 @@ export default function ProjectDetail() {
     projectData.layout === "layout_1"
       ? projectData.short_description || "Détails du projet"
       : projectData.long_description
-      ? projectData.long_description.slice(0, 160)
-      : "Détails du projet";
+        ? projectData.long_description.slice(0, 160)
+        : "Détails du projet";
 
   return (
     <motion.div
@@ -95,14 +97,12 @@ export default function ProjectDetail() {
       animate={isExiting ? "exit" : "visible"}
       variants={pageVariants}
       onAnimationComplete={handleExitComplete}
-      className={styles['project-detail-container']}
+      className={styles["project-detail-container"]}
     >
-      <SEO
-        title={projectData.titre || "Projet"}
-        description={description}
-      />
+      <SEO title={projectData.titre || "Projet"} description={description} />
       <ProjectHeader project={projectData} />
       {renderLayout()}
+      <Footer />
     </motion.div>
   );
 }
