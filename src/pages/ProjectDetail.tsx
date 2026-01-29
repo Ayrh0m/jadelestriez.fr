@@ -25,6 +25,7 @@ export default function ProjectDetail() {
 
     const query = `*[_type == "projet" && slug.current == $slug][0]{
       _id,
+      "slug": slug.current,
       layout,
       titre,
       subtitle,
