@@ -37,7 +37,7 @@
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
-  max-width: 450px;
+  max-width: 550px;
   margin-bottom: 3rem;
   margin-top: 1rem;
 }
@@ -45,7 +45,6 @@
 .category-filters {
   display: flex;
   gap: 2rem;
-  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -91,6 +90,7 @@
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-card a {

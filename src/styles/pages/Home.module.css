@@ -25,7 +25,7 @@
   margin-top: 6rem;
   font-family: var(--font-heading);
   margin-bottom: 1rem;
-  font-size: 4rem;
+  font-size: clamp(4rem, 2vw, 6rem);
   width: 100%;
   line-height: 1.2;
 }

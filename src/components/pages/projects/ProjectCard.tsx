@@ -13,7 +13,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <motion.div
-      className={styles['project-card']}
+      className={styles["project-card"]}
       initial="rest"
       whileHover="hover"
       animate="rest"
@@ -27,24 +27,24 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             .quality(60)
             .url()}
           alt={project.titre || "Projet sans titre"}
-          className={styles['project-image']}
+          className={styles["project-image"]}
           loading="lazy"
           variants={{
             rest: { opacity: 1, scale: 1 },
-            hover: { opacity: 0.25, scale: 1.05 },
+            hover: { opacity: 0.25, scale: 1.05, filter: "blur(3px)" },
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         />
 
         <motion.div
-          className={styles['project-card-overlay']}
+          className={styles["project-card-overlay"]}
           variants={{
             rest: { opacity: 0, y: 10 },
             hover: { opacity: 1, y: 0 },
           }}
           transition={{ duration: 0.3, ease: "easeOut" }}
         >
-          <h3 className={styles['project-card-title']}>{project.titre}</h3>
+          <h3 className={styles["project-card-title"]}>{project.titre}</h3>
         </motion.div>
       </Link>
     </motion.div>

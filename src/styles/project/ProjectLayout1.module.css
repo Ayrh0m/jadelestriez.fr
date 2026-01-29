@@ -17,13 +17,13 @@
   height: 26%;
   padding: 6rem 2rem 0 2rem; /* Plus de padding en haut pour compenser les éléments fixes */
   display: flex;
-  gap: 6rem;
+  gap: 2rem;
   background-color: var(--color-background);
 }
 
 .project-header-left {
   display: flex;
-  flex-basis: 30%;
+  flex-basis: 25%;
   flex-direction: column;
   gap: 1rem;
 }
@@ -31,7 +31,7 @@
 .project-header-texts {
   display: flex;
   flex-basis: 70%;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 .project-title {
@@ -50,13 +50,6 @@
   font-weight: 400;
   color: var(--color-foreground);
   margin: 0;
-}
-
-.project-short-description {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--color-foreground);
 }
 
 .project-description-text {
@@ -83,6 +76,7 @@
   height: 100%;
   object-fit: cover;
   flex-grow: 1;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 /* Responsive */

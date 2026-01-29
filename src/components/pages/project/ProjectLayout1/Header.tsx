@@ -17,24 +17,21 @@ export default function Header({ project }: HeaderProps) {
   };
 
   return (
-    <header className={styles['project-editorial-header']}>
-      <div className={styles['project-header-left']}>
-        <motion.h1 className={styles['project-title']} variants={itemVariants}>
+    <header className={styles["project-editorial-header"]}>
+      <div className={styles["project-header-left"]}>
+        <motion.h1 className={styles["project-title"]} variants={itemVariants}>
           {project.titre}
         </motion.h1>
-        <motion.h2 className={styles['project-subtitle']} variants={itemVariants}>
+        <motion.h2
+          className={styles["project-subtitle"]}
+          variants={itemVariants}
+        >
           {project.subtitle}
         </motion.h2>
       </div>
-      <div className={styles['project-header-texts']}>
+      <div className={styles["project-header-texts"]}>
         <motion.div
-          className={styles['project-short-description']}
-          variants={itemVariants}
-        >
-          {project.short_description}
-        </motion.div>
-        <motion.div
-          className={styles['project-description-text']}
+          className={styles["project-description-text"]}
           variants={itemVariants}
         >
           {project.long_description}
