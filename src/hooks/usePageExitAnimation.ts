@@ -14,21 +14,25 @@ export function usePageExitAnimation() {
   // Block navigation to trigger exit animation
   const blocker = useBlocker(
     ({ currentLocation, nextLocation }) =>
-      !isExiting && 
-      (currentLocation.pathname !== nextLocation.pathname || 
-       currentLocation.search !== nextLocation.search)
+      !isExiting &&
+      (currentLocation.pathname !== nextLocation.pathname ||
+        currentLocation.search !== nextLocation.search),
   );
 
   // Handle blocked navigation
   useEffect(() => {
     if (blocker.state === "blocked") {
-      // Reconstruct full path including search params
-      const nextPath = blocker.location.pathname + blocker.location.search;
+      // Reconstruct full path including search params and hash
+      const nextPath =
+        blocker.location.pathname +
+        blocker.location.search +
+        blocker.location.hash;
       nextLocationRef.current = nextPath;
-      
+
       // Check if we are navigating to a project detail page
       // If so, the header should animate out
-      const isProjectDetail = nextPath.startsWith('/projets/') && nextPath !== '/projets';
+      const isProjectDetail =
+        nextPath.startsWith("/projets/") && nextPath !== "/projets";
       if (isProjectDetail) {
         setShouldLayoutExit(true);
       }
@@ -38,7 +42,14 @@ export function usePageExitAnimation() {
         setIsExiting(true);
       });
     }
-  }, [blocker.state, blocker.location?.pathname, setIsExiting, setShouldLayoutExit]);
+  }, [
+    blocker.state,
+    blocker.location?.pathname,
+    blocker.location?.search,
+    blocker.location?.hash,
+    setIsExiting,
+    setShouldLayoutExit,
+  ]);
 
   // Reset blocker when component unmounts
   useEffect(() => {

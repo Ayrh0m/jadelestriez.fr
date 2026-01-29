@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import { client } from "../sanityClient";
 import { motion } from "motion/react";
 import SEO from "../components/SEO";
@@ -23,6 +23,22 @@ export default function Projects() {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState<string>("");
   const [order, setOrder] = useState<"desc" | "asc">("desc");
   const { isExiting, handleExitComplete } = usePageExitAnimation();
+  const location = useLocation();
+
+  // Handle scroll to anchor on load
+  useEffect(() => {
+    if (!isLoading && location.hash) {
+      const id = location.hash.replace("#", "");
+
+      const element = document.getElementById(id);
+      if (element) {
+        // Small timeout to ensure DOM layout is complete
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 300);
+      }
+    }
+  }, [isLoading, location.hash]);
 
   // Set initial category from URL param if available
   useEffect(() => {
@@ -145,20 +161,22 @@ export default function Projects() {
 
   return (
     <>
-      <section className={styles['projects-section']}>
+      <section className={styles["projects-section"]}>
         <SEO
           title="Mes Projets"
           description="Découvrez les projets de Jade, incluant graphisme, communication et design web. Une galerie variée démontrant mes compétences."
         />
 
         <motion.header
-          className={styles['projects-header']}
+          className={styles["projects-header"]}
           initial="hidden"
           animate={isExiting ? "exit" : "visible"}
           variants={headerVariants}
         >
-          <h1 className={styles['projects-title']}>
-            <span className="sr-only">Mes Projets de Communication et Design</span>
+          <h1 className={styles["projects-title"]}>
+            <span className="sr-only">
+              Mes Projets de Communication et Design
+            </span>
             <img src={projets} alt="Projets" />
           </h1>
 
@@ -172,7 +190,7 @@ export default function Projects() {
         </motion.header>
 
         <motion.div
-          className={styles['projects-grid']}
+          className={styles["projects-grid"]}
           variants={containerVariants}
           initial="hidden"
           animate={isExiting ? "exit" : "visible"}
@@ -188,7 +206,11 @@ export default function Projects() {
                 </motion.div>
               ))
             : filteredProjects.map((project) => (
-                <motion.div key={project._id} variants={itemVariants}>
+                <motion.div
+                  key={project._id}
+                  variants={itemVariants}
+                  id={project.slug}
+                >
                   <ProjectCard project={project} />
                 </motion.div>
               ))}

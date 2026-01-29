@@ -21,13 +21,19 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
   return (
     <>
       <motion.div variants={itemVariants}>
-        <Link to={`/projets`} className={styles['project-back-link']}>
+        <Link
+          to={`/projets#${project.slug}`}
+          className={styles["project-back-link"]}
+        >
           <FaChevronLeft />
         </Link>
       </motion.div>
 
       {project.categorie && (
-        <motion.div className={styles['project-category']} variants={itemVariants}>
+        <motion.div
+          className={styles["project-category"]}
+          variants={itemVariants}
+        >
           <Link to={`/projets?categorie=${project.categorie.slug}`}>
             {project.categorie.nom.toUpperCase()}
           </Link>

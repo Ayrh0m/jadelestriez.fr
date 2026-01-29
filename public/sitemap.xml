@@ -18,6 +18,18 @@
   </url>
   
   <url>
+    <loc>https://jadelestriez.fr/projets/ausdap-rocky</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jadelestriez.fr/projets/fete-du-parc</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://jadelestriez.fr/projets/green-waves-coffee</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -43,6 +55,12 @@
   </url>
   <url>
     <loc>https://jadelestriez.fr/projets/fete-des-carres-potagers</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://jadelestriez.fr/projets/magazine-vogue</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
